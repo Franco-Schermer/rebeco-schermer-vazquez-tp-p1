@@ -32,7 +32,7 @@ public class Repartidor {
 
     public void moverIzquierda() {
         this.x -= this.velocidad;
-        this.angulo = -Math.PI; // 
+        this.angulo = Math.PI; // 
     }
 
     public void moverAbajo() {
