@@ -17,7 +17,7 @@ public class Repartidor {
         this.ancho = ancho;
         this.alto = alto;
         this.velocidad = velocidad;
-        this.angulo = -Math.PI / 2;; 
+        this.angulo = 3*Math.PI / 2;; 
     }
 
     public void dibujar(Entorno entorno) {
