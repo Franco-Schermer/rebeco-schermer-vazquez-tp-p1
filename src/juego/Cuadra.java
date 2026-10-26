@@ -1,44 +1,66 @@
 package juego;
 
-import java.awt.Color;
-
 import entorno.Entorno;
 
-// Creacion de la clase para dibujar una CUADRA
-
 public class Cuadra {
+    private int x;
+    private int y;
+    private double ancho;
+    private double alto;
+    
+    private Casa[] casas;
+    private Negocio negocio;
 
-	private double x;
-	private double y;
-	private double alto;
-	private double ancho;
-	
-	
-	public Cuadra(double x, double y, double alto, double ancho) {
-		this.x = x;
-		this.y = y;
-		this.alto = alto;
-		this.ancho = ancho;
-	}
-	
-	public double getX() {
-		return x;
-	}
+    public Cuadra(int x, int y, double ancho, double alto) {
+        this.x = x;
+        this.y = y;
+        this.ancho = ancho;
+        this.alto = alto;
+        
+        this.casas = new Casa[3];
+        this.casas[0] = new Casa(x - 20, y - 20, 22, 22); 
+        this.casas[1] = new Casa(x + 20, y - 20, 22, 22); 
+        this.casas[2] = new Casa(x - 20, y + 20, 22, 22);  
+        
+        this.negocio = new Negocio(x + 20, y + 20, 22, 22);   
+    }
 
-	public double getY() {
-		return y;
-	}
+    public void dibujar(Entorno entorno) {
+        entorno.dibujarRectangulo(x, y, ancho, alto, 0, java.awt.Color.green);
+        
+        for (int i = 0; i < this.casas.length; i++) {
+            if (this.casas[i] != null) {
+                this.casas[i].dibujar(entorno);
+            }
+        }
+        
+        if (this.negocio != null) {
+            this.negocio.dibujar(entorno);
+        }
+    }
 
-	public double getAlto() {
-		return alto;
-	}
+    public int getX() {
+        return x;
+    }
 
-	public double getAncho() {
-		return ancho;
-	}
-	
-	public void dibujar(Entorno entorno) {
-		entorno.dibujarRectangulo(x, y, ancho, alto, 0, Color.green);
-	}
-	
+    public int getY() {
+        return y;
+    }
+
+    public double getAncho() {
+        return ancho;
+    }
+
+    public double getAlto() {
+        return alto;
+    }
+
+    public Negocio getNegocio() {
+        return this.negocio;
+    }
+    
+    public Casa[] getCasas() {
+        return this.casas;
+    }
+    
 }

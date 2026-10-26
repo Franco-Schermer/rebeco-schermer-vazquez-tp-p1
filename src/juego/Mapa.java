@@ -1,46 +1,35 @@
 package juego;
 
-import java.awt.Color;
-
 import entorno.Entorno;
 
 public class Mapa {
-	
-private Cuadra[] cuadras;
-	
-	private int fila = 4;
-	private int columna = 4;
-	private double anchoCuadra = 145;
-	private double altoCuadra = 90;
-	private double calle = 45; 
-	private double inicioX = 110;
-	private double inicioY = 95;
-	
-	public Mapa() {
-		
-		this.cuadras = new Cuadra[16];
-		int indice = 0;
-		
-		for(int i = 0; i < this.fila; i++) {
-			for(int j = 0; j < this.columna; j++) {
-				
-				double x = this.inicioX + j * (this.anchoCuadra + this.calle);
-				double y = this.inicioY + i * (this.altoCuadra + this.calle);
-				
-				this.cuadras[indice] = new Cuadra(x, y, altoCuadra, anchoCuadra);
-				indice++;
-			}
-		}
-	}
-	
-	// Método para recorrer el arreglo y dibujar cada cuadra en pantalla
-	public void dibujar(Entorno entorno) {
-		for (int i = 0; i < this.cuadras.length; i++) {
-			if (this.cuadras[i] != null) {
-				this.cuadras[i].dibujar(entorno);
-			}
-		}
-	}
+    private Cuadra[] cuadras;
 
-	
+    public Mapa() {
+        this.cuadras = new Cuadra[16]; 
+        int index = 0;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 4; j++) {
+                int x = 130 + j * 180;
+                int y = 80 + i * 140;
+                this.cuadras[index] = new Cuadra(x, y, 100, 90);
+                index++;
+            }
+        }
+    }
+
+    public void dibujar(Entorno entorno) {
+        for (int i = 0; i < this.cuadras.length; i++) {
+            if (this.cuadras[i] != null) {
+                this.cuadras[i].dibujar(entorno);
+            }
+        }
+    }
+
+    public Cuadra[] getCuadras() {
+        return this.cuadras;
+    }
+    
+    
+    
 }

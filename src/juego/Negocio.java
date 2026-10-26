@@ -4,27 +4,27 @@ import java.awt.Color;
 
 import entorno.Entorno;
 
-//Creacion de la clase para dibujar un NEGOCIO
+
 
 public class Negocio {
 
-	private double x;
-	private double y;
+	private int x;
+	private int y;
 	private double alto;
 	private double ancho;
 	
-	public Negocio(double x, double y, double alto, double ancho) {
+	public Negocio(int x, int y, double alto, double ancho) {
 		this.x = x;
 		this.y = y;
 		this.alto = alto;
 		this.ancho = ancho;
 	}
 	
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 
@@ -37,7 +37,14 @@ public class Negocio {
 	}
 	
 	public void dibujar(Entorno entorno) {
-		entorno.dibujarRectangulo(x, y, ancho, alto, 0, Color.green);
+		entorno.dibujarRectangulo(x, y, ancho, alto, 0, Color.red);
 	}
+	
+	//Metodo para saber si el mouse esta dentro de las coordenadas del NEGOCIO
+		public boolean estaAdentro(double px, double py) {
+		    return px >= (this.x - this.ancho / 2) && px <= (this.x + this.ancho / 2) &&
+		           py >= (this.y - this.alto / 2) && py <= (this.y + this.alto / 2);
+		}
+		
 	
 }
