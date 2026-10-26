@@ -17,22 +17,21 @@ public class Repartidor {
         this.ancho = ancho;
         this.alto = alto;
         this.velocidad = velocidad;
-        this.angulo = 3*Math.PI / 2;; 
+        this.angulo = 3 * Math.PI / 2; 
     }
 
     public void dibujar(Entorno entorno) {
-        
         entorno.dibujarTriangulo(this.x, this.y, (int) this.ancho, (int) this.alto, this.angulo, Color.CYAN);
     }
 
     public void moverDerecha() {
         this.x += this.velocidad;
-        this.angulo = 0 ; 
+        this.angulo = 0; 
     }
 
     public void moverIzquierda() {
         this.x -= this.velocidad;
-        this.angulo = Math.PI; // 
+        this.angulo = Math.PI; 
     }
 
     public void moverAbajo() {
@@ -45,7 +44,7 @@ public class Repartidor {
         this.angulo = 3 * Math.PI / 2; 
     }
 
-    
+    // --- GETTERS ---
     public double getX() {
         return x;
     }
@@ -54,7 +53,6 @@ public class Repartidor {
         return y;
     }
 
-   
     public double getAncho() {
         return this.ancho;
     }
@@ -62,7 +60,18 @@ public class Repartidor {
     public double getAlto() {
         return this.alto;
     }
+
     public double getAngulo() {
         return this.angulo;
+    }
+    
+    public void respawnRep(double x, double y) {
+    	this.x = x;
+    	this.y = y;
+    }
+
+    
+    public Proyectil disparar() {
+        return new Proyectil(this.x, this.y, this.angulo);
     }
 }
